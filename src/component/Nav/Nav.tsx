@@ -1,8 +1,15 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Navbar } from "flowbite-react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../UseContext/UseContext";
 
 const Nav = () => {
+  const { user, logOut } = useContext(AuthContext);
+  const handleClick = () => {
+    logOut().then(() => {
+      //
+    });
+  };
   return (
     <div>
       <Navbar fluid={true} rounded={true}>
@@ -25,9 +32,12 @@ const Nav = () => {
             {" "}
             <Link to="/">Complete Task</Link>{" "}
           </Navbar.Link>
-          <Navbar.Link href="/navbars">
-            {" "}
-            <Link to="/login">Sing up</Link>{" "}
+          <Navbar.Link>
+            {user ? (
+              <p onClick={handleClick}>Logo out</p>
+            ) : (
+              <Link to="/login">Sing up</Link>
+            )}
           </Navbar.Link>
         </Navbar.Collapse>
       </Navbar>

@@ -1,7 +1,9 @@
 import { Button, TextInput } from "flowbite-react";
-import React, { ChangeEvent, FormEvent, useState } from "react";
+import React, { ChangeEvent, FormEvent, useContext, useState } from "react";
+import { AuthContext } from "../../UseContext/UseContext";
 
 const AddTask = () => {
+  const { user } = useContext(AuthContext);
   const [newTodo, setNewTodo] = useState<string>("");
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setNewTodo(e.target.value);
@@ -10,12 +12,12 @@ const AddTask = () => {
   const handleSubmit = (e: FormEvent<HTMLButtonElement>) => {
     e.preventDefault();
 
-    fetch("http://localhost:5000/user", {
+    fetch("https://server-khaki-beta.vercel.app/user", {
       method: "POST",
       headers: {
         "content-type": "application/json",
       },
-      body: JSON.stringify({ newTodo }),
+      body: JSON.stringify({ userEmail: user?.email, newTodo }),
     })
       .then((res) => res.json())
       .then((data) => {
