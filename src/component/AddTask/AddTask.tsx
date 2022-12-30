@@ -1,6 +1,7 @@
 import { Button, TextInput } from "flowbite-react";
 import React, { ChangeEvent, FormEvent, useContext, useState } from "react";
 import { AuthContext } from "../../UseContext/UseContext";
+import AddTaskDetail from "./AddTaskDetail";
 
 const AddTask = () => {
   const { user } = useContext(AuthContext);
@@ -38,6 +39,7 @@ const AddTask = () => {
           </form>
         </div>
       </div>
+      <AddTaskDetail></AddTaskDetail>
     </div>
   );
 };

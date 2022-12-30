@@ -20,21 +20,23 @@ const Nav = () => {
         </Navbar.Brand>
         <Navbar.Toggle />
         <Navbar.Collapse>
-          <Navbar.Link href="/navbars">
+          <Navbar.Link>
             {" "}
             <Link to="/"> Add Task</Link>{" "}
           </Navbar.Link>
-          <Navbar.Link href="/navbars">
+          <Navbar.Link>
             {" "}
             <Link to="myTask">My Task</Link>{" "}
           </Navbar.Link>
-          <Navbar.Link href="/navbars">
+          <Navbar.Link>
             {" "}
             <Link to="/">Complete Task</Link>{" "}
           </Navbar.Link>
           <Navbar.Link>
             {user ? (
-              <p onClick={handleClick}>Logo out</p>
+              <Navbar.Link className="pointer" onClick={handleClick}>
+                Logo out
+              </Navbar.Link>
             ) : (
               <Link to="/login">Sing up</Link>
             )}
